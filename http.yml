@@ -1,0 +1,29 @@
+---
+- name: About to Install HTTPD
+  hosts: jupyter
+  gather_facts: True
+  become: su
+  vars:
+    folder: git
+    file: test.txt
+    
+  tasks:
+    - name: Installing HTTPD
+      yum:
+        name: 
+          - httpd*
+          - vim
+          - tree
+        state: present
+      ignore_errors: yes 
+      when: ansible_distribution == 'CentOS'
+
+    - name: Installing HTTPD
+      apt:
+        name: 
+          - apache2
+          - vim
+          - tree
+        state: present
+      ignore_errors: yes 
+      when: ansible_distribution == 'Ubuntu'  
