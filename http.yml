@@ -28,4 +28,6 @@
       ignore_errors: yes 
       when: ansible_distribution == 'Ubuntu'  
 
-  - name:    
+  - name: Debugging
+    debug:
+      msg: ROLE SUCCEEDED
